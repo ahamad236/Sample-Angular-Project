@@ -3,15 +3,15 @@
 <button (click)="getProductList()" >GetAPI</button>
 
 <table>
-    <!-- <tr>
-        @for(product in this.products; track: product.id){
+    <tr>
+        @for(product of products; track product.id){
             <th>
                 {{ product }}
             </th>
         }
     </tr>
 
-        @for(){
+        <!-- @for(){
             <tr>
                 <td></td>
             </tr>
