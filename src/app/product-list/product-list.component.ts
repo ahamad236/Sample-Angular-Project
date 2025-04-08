@@ -10,12 +10,14 @@ import { HomeService } from '../home.service';
 export class ProductListComponent {
   service = inject(HomeService);
   products: any;
+  showTable: boolean = false;
 
   getProductList() {
     this.service.getAPIData().subscribe(
       response => {
         console.log(response);
         if ('products' in response) {
+          this.showTable = true;
           this.products = response.products;
         }
       }
@@ -23,8 +25,22 @@ export class ProductListComponent {
   }
 
   objectKeys() {
+    if (!this.products) {
+      return
+    }
+
     const returnArr = Object.keys(this.products[0]);
-    return returnArr.splice(0, 4);
+    const splitArr = [];
+    if ("id" in returnArr) {
+      splitArr.push(returnArr.id);
+    }
+    if ("title" in returnArr) {
+      splitArr.push(returnArr.title);
+    }
+    if ("description" in returnArr) {
+      splitArr.push(returnArr.description)
+    }
+    return splitArr;
   }
 
 }

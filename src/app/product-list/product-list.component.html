@@ -2,18 +2,26 @@
 
 <button (click)="getProductList()" >GetAPI</button>
 
-<table>
-    <tr>
-        @for(key of objectKeys(); track key){
+@if(showTable){
+    <table>
+        <tr class="p-2">
+            @for(key of objectKeys(); track key){
             <th class="p-2">
                 {{ key }}
             </th>
-        }
-    </tr>
-
-        <!-- @for(){
-            <tr>
-                <td></td>
+            }
+        </tr>
+        <!-- @for(product of products; track product.id){
+            <tr class="p-2">
+                @for(datacell of product; track datacell){
+                    @if(objectKeys().includes(datacell)){
+                        <td>
+                            {{ datacell }}
+                        </td>
+                    }
+                }
             </tr>
         } -->
-</table>
+    </table>
+}
+
