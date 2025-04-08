@@ -4,9 +4,9 @@
 
 <table>
     <tr>
-        @for(product of products; track product.id){
-            <th>
-                {{ product }}
+        @for(key of objectKeys(); track key){
+            <th class="p-2">
+                {{ key }}
             </th>
         }
     </tr>
