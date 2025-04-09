@@ -11,6 +11,8 @@ export class ProductListComponent {
   service = inject(HomeService);
   products: any;
   showTable: boolean = false;
+  productKeys: any;
+  range: any = [1, 2, 3, 4];
 
   getProductList() {
     this.service.getAPIData().subscribe(
@@ -19,6 +21,8 @@ export class ProductListComponent {
         if ('products' in response) {
           this.showTable = true;
           this.products = response.products;
+
+          this.productKeys = this.objectKeys();
         }
       }
     )
@@ -30,16 +34,16 @@ export class ProductListComponent {
     }
 
     const returnArr = Object.keys(this.products[0]);
-    const splitArr = [];
-    if ("id" in returnArr) {
-      splitArr.push(returnArr.id);
-    }
-    if ("title" in returnArr) {
-      splitArr.push(returnArr.title);
-    }
-    if ("description" in returnArr) {
-      splitArr.push(returnArr.description)
-    }
+    const splitArr = returnArr.slice(0, 4);
+    // if ("id" in returnArr) {
+    //   splitArr.push(returnArr.id);
+    // }
+    // if ("title" in returnArr) {
+    //   splitArr.push(returnArr.title);
+    // }
+    // if ("description" in returnArr) {
+    //   splitArr.push(returnArr.description)
+    // }
     return splitArr;
   }
 

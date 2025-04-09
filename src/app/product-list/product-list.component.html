@@ -5,12 +5,22 @@
 @if(showTable){
     <table>
         <tr class="p-2">
-            @for(key of objectKeys(); track key){
+            @for(key of productKeys; track key){
             <th class="p-2">
                 {{ key }}
             </th>
             }
         </tr>
+        @for(product of products; track product){
+            <tr class="p-2">
+                @for(i of range; track i){
+                    <td>
+                        {{ product[productKeys[i]] }}
+                    </td>
+                }
+            </tr>
+        }
+
         <!-- @for(product of products; track product.id){
             <tr class="p-2">
                 @for(datacell of product; track datacell){
